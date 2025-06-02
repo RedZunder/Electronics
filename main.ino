@@ -2,7 +2,7 @@
 
 SoftwareSerial BTSerial(10, 11); // RX, TX
 
-//pins
+//pins for R G and B colors of the LED
 #define R 3
 #define G 6
 #define B 5
@@ -11,7 +11,6 @@ void setup()
 {
     Serial.begin(9600);
     BTSerial.begin(9600);
-    Serial.println("Echo test started. Type below:");
 }
 
 String x="";
@@ -19,10 +18,10 @@ String x="";
 void loop() 
 {
 
-  if (BTSerial.available()) 
+  if (BTSerial.available())     //if there's anything coming from BLE to the Arduino
   {
       x=BTSerial.readString();
-      Serial.print(x);
+      Serial.print(x);            //show in Serial for debugging
       decode(x);
   }
 
